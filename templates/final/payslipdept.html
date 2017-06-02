@@ -1,0 +1,46 @@
+{% extends 'final/base.html' %}
+{% block title %}Payslip Employee{% endblock %}
+{% block body %}
+
+    <form class="form-horizontal" action="/editpayslipm/">
+<fieldset>
+{% csrf_token %}
+<!-- Form Name -->
+<legend>Departments</legend>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="managerial"></label>
+  <div class="col-md-4">
+    <button id="managerial" name="managerial" class="btn btn-primary">Managerial</button>
+  </div>
+</div>
+</fieldset>
+    </form>
+<form class="form-horizontal" action="/editpayslipt/">
+<fieldset>
+{% csrf_token %}
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="technical"></label>
+  <div class="col-md-4">
+    <button id="technical" name="technical" class="btn btn-primary">Technical</button>
+  </div>
+</div>
+</fieldset>
+    </form>
+<form class="form-horizontal" action="/editpayslipc/">
+<fieldset>
+{% csrf_token %}
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="clerical"></label>
+  <div class="col-md-4">
+    <button id="clerical" name="clerical" class="btn btn-primary">Clerical</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+{% endblock %}

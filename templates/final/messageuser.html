@@ -1,0 +1,32 @@
+{% extends 'final/base.html' %}
+{% block title %}Message to Admin{% endblock %}
+{% block body %}
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/usermessagesave/">
+    {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Message</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="message">Message</label>
+  <div class="col-md-4">
+  <input id="message" name="message" placeholder="Enter Message Here" class="form-control input-md" type="text">
+
+  </div>
+</div>
+    <input type="hidden" name="username" value="{{ a.username }}">
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Sent Message</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+{% endblock %}

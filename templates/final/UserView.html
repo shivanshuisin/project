@@ -1,0 +1,60 @@
+{% extends 'final/base.html' %}
+{% block title %}UserLogin{% endblock %}
+{% block body %}
+    <img src="/media/{{ u.username }}_photo.jpg"class="img-rounded" height="302px" width="276px">
+   <div class="container">
+   <table class="table table-bordered">
+       <tr>
+           <td><strong>Name</strong></td>
+           <td>{{ u.f_name }} {{ u.l_name }}</td>
+       </tr>
+       <tr>
+           <td><strong>Access Level</strong></td>
+           <td>{{ u.accesslevel }}</td>
+       </tr>
+       <tr>
+           <td><strong>Designation</strong></td>
+           <td>{{ u.designation }}</td>
+       </tr>
+       <tr>
+           <td><strong>Department</strong></td>
+           <td>{{ u.department }}</td>
+       </tr>
+       <tr>
+           <td><strong>Gender</strong></td>
+           <td>{{ u.gender }}</td>
+       </tr>
+       <tr>
+           <td><strong>BaseSalary</strong></td>
+           <td>{{ u.base_salary }}</td>
+       </tr>
+       <tr>
+           <td><strong>Bonus</strong></td>
+           <td>{{ u.bonus }}</td>
+       </tr>
+       <tr>
+           <td><strong>OldestMonthPayslip</strong></td>
+           <td><a href="/media/{{ u.username }}_oldest_payslip.pdf" target="_blank">ViewPayslip</a></td>
+       </tr>
+       <tr>
+           <td><strong>PreviousMonthPayslip</strong></td>
+           <td><a href="/media/{{ u.username }}_previous_payslip.pdf" target="_blank">ViewPayslip</a></td>
+       </tr>
+       <tr>
+           <td><strong>CurrentMonthPayslip</strong></td>
+           <td><a href="/media/{{ u.username }}_current_payslip.pdf" target="_blank">ViewPayslip</a></td>
+       </tr>
+
+   </table>
+   <form class="form-group" method="post" enctype="multipart/form-data" action="/usermessageview/">
+       {% csrf_token %}
+       <input type="hidden" name="username" value="{{ u.username }}">
+       <div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Sent Message</button>
+  </div>
+</div>
+   </form>
+   </div>
+ {% endblock %}

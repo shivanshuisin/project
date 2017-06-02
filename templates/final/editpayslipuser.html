@@ -1,0 +1,73 @@
+{% extends 'final/base.html' %}
+{% block title %}Update Payslip{% endblock %}
+{% block style %}
+    .error{
+				color:#FFFFFF;
+				background-color:#E53935;
+				border-color: #a22a27;
+			}
+
+			.success{
+				color: #FFFFFF;
+				background-color: #43A047;
+				border-color: #2c692f;
+			}
+{% endblock %}
+{% block body %}
+    {% for message in messages %}
+	  <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+		<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="alert {{ message.tags }} alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+
+
+
+
+<form  method="post" action="/updatepayslip/" enctype="multipart/form-data">
+<fieldset>
+    {% csrf_token %}
+    <input type="hidden" name="username" value="{{ user.username }}">
+
+<!-- Form Name -->
+<legend>Payslip View/Update</legend>
+    <table class="table table-bordered table-hover table-responsive">
+    <thead>
+    <th>
+        <td><b>{{ user.f_name }} {{ user.l_name }}</b></td>
+    </th>
+    </thead>
+    <tbody>
+    <tr>
+    <td>Oldest Month Payslip</td>
+    <td><a href="/media/{{ user.username }}_oldest_payslip.pdf" target="_blank">Oldest Month</a></td>
+    <td> <input id="oldest_month" name="oldest_month" class="input-file" type="file"></td>
+    </tr>
+    <tr>
+    <td>Previous Month Payslip</td>
+    <td><a href="/media/{{ user.username }}_previous_payslip.pdf" target="_blank">Previous Month</a></td>
+    <td> <input id="oldest_month" name="previous_month" class="input-file" type="file"></td>
+    </tr>
+    <tr>
+    <td>Current Month Payslip</td>
+    <td><a href="/media/{{ user.username }}_current_payslip.pdf" target="_blank">Current Month</a></td>
+    <td> <input id="oldest_month" name="current_month" class="input-file" type="file"></td>
+    </tr>
+</tbody>
+</table>
+
+
+
+  <div class="col-md-4">
+    <button id="create" name="create" class="btn btn-primary">Update Payslip</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+{% endblock %}

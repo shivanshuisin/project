@@ -1,0 +1,154 @@
+{% extends 'final/base.html' %}
+{% block title %}User Registration{% endblock %}
+{% block style %}.error{
+				color:#FFFFFF;
+				background-color:#E53935;
+				border-color: #a22a27;
+			}
+
+			.success{
+				color: #FFFFFF;
+				background-color: #43A047;
+				border-color: #2c692f;
+			}{% endblock %}
+{% block body %}
+    {% for message in messages %}
+	  <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+		<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="alert {{ message.tags }} alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+    <div class="form-group">
+    <img src="/media/{{ user.username }}_photo.jpg" class="img-rounded" alt="image{{ user.f_name }}" width ="304px" height="276px">
+    </div>
+<form class="form-horizontal" action="/update/" method="post" enctype="multipart/form-data">
+<fieldset>
+    {% csrf_token %}
+
+<!-- Form Name -->
+<legend>Update User</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="username">UserName</label>
+  <div class="col-md-4">
+  <input id="username" name="username" placeholder="" value="{{ user.username }}" class="form-control input-md" readonly required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password(md5 form showed)</label>
+  <div class="col-md-4">
+  <input id="password" name="password" placeholder="" value="{{ user.password }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="accesslevel">AccessLevel</label>
+  <div class="col-md-4">
+  <input id="accesslevel" name="accesslevel" placeholder="" value="{{ user.accesslevel }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="f_name">First Name</label>
+  <div class="col-md-4">
+  <input id="f_name" name="f_name" placeholder="" value="{{ user.f_name }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="l_name">Last Name</label>
+  <div class="col-md-4">
+  <input id="l_name" name="l_name" placeholder="" value="{{ user.l_name }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="department">Depatment</label>
+  <div class="col-md-4">
+  <input id="department" name="department" placeholder="" value="{{ user.department }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="designation">Designation</label>
+  <div class="col-md-4">
+  <input id="designation" name="designation" placeholder="" value="{{ user.designation }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="gender">Gender</label>
+  <div class="col-md-4">
+  <input id="gender" name="gender" placeholder="" value="{{ user.gender }}"class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="base_salary">Base Salary</label>
+  <div class="col-md-4">
+  <input id="base_salary" name="base_salary" placeholder="" value="{{ user.base_salary }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="bonus">Bonus</label>
+  <div class="col-md-4">
+  <input id="bonus" name="bonus" placeholder="" value="{{ user.bonus }}" class="form-control input-md" required="" type="text">
+
+  </div>
+</div>
+
+    <div class="form-group">
+    <label class="col-md-4 control-label" for="image">Image Upload</label>
+  <div class="col-md-4">
+
+    <input id="image" name="image" class="input-file" value="image" type="file">
+  </div>
+        </div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="create"></label>
+  <div class="col-md-4">
+    <button id="create" name="create" class="btn btn-primary">Updateuser</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+    <form class="form-horizontal" action="/deleteuser/" method="post" enctype="multipart/form-data">
+<fieldset>
+{% csrf_token %}
+    <div class="form-group">
+        <div class="col-md-4">
+            <input type="hidden" name="deleteid" value="{{ user.id }}">
+            <button id="managerial" name="managerial" class="btn btn-primary">Delete User</button>
+        </div>
+    </div>
+</fieldset>
+              </form>
+{% endblock %}

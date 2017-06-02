@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+
+
+    <title>Login Page</title>
+    <style>
+        .error{
+				color:#FFFFFF;
+				background-color:#E53935;
+				border-color: #a22a27;
+			}
+
+			.success{
+				color: #FFFFFF;
+				background-color: #43A047;
+				border-color: #2c692f;
+			}
+    </style>
+</head>
+<body>
+<form class="form-horizontal" action="/checklogin/" method="post">
+<fieldset>
+    {% csrf_token %}
+
+<!-- Form Name -->
+<legend>Login Page</legend>
+    {% for message in messages %}
+	  <div class="row col-sm-6 col-xs-12 col-md-4" style="position:fixed; right:20px; top:20px">
+		<div class="col-sm-12 col-xs-12 col-md-12">
+			<div class="alert {{ message.tags }} alert-dismissable">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{message }}
+			</div>
+		</div>
+	  </div>
+    {% endfor %}
+
+<!-- Text input-->
+<div class="form-group">
+
+  <label class="col-md-4 control-label" for="username">Username</label>
+  <div class="col-md-4">
+  <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="password">Password</label>
+  <div class="col-md-4">
+    <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button id="submit" name="submit" class="btn btn-primary">Login</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+</body>
+</html>

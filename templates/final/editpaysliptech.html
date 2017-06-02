@@ -1,0 +1,49 @@
+{%  extends 'final/base.html' %}
+{% block body %}
+<h2>Technical Employee</h2>
+       <table class="table table-bordered table-hover table-responsive">
+	<thead>
+		<tr>
+			<th>
+				Name
+			</th>
+			<th>
+				Depatment
+			</th>
+			<th>
+				Designation
+			</th>
+			<th>
+				Gender
+			</th>
+			<th>
+
+			</th>
+		</tr>
+	</thead>
+{% for user in userm %}
+	<tbody>
+
+		<tr>
+			<td>
+				{{ user.f_name }} {{ user.l_name }}
+			</td>
+			<td>
+				{{ user.department }}
+			</td>
+			<td>
+				{{ user.designation }}
+			</td>
+			<td>
+                {{ user.gender }}
+			</td>
+			<td>
+				<a href="/payslip/{{ user.id }}/" class="btn btn-xs btn-success">View/Edit</a>
+
+			</td>
+		</tr>
+	</tbody>
+        {% endfor %}
+</table>
+
+{%  endblock %}
